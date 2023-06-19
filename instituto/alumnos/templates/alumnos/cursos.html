@@ -1,0 +1,37 @@
+{% extends "./base.html" %}
+{% load static %}
+{% block title %} PG | CURSOS {% endblock %}
+
+{% block body %}
+    <div>
+        <h1>CURSOS</h1>
+    </div>
+    <div class="p-2">
+      <a href="{% url 'gestioncur'%}" class="btn btn-primary">Gestion Cursos</a>
+    </div>
+
+    <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
+        <!--  DESDE BASE DE DATOS -->
+        {% for cur in cursos %}
+        <div class="col">
+          <div class="card shadow-sm">
+            <img src="{{cur.img.url}}" alt="">
+            <div class="card-body">
+              <div class="card-text">
+                <p>{{cur.nombre}} <br>
+                  sence		: {{cur.sence}} <br>
+                  Area		: {{cur.idArea}} <br>
+                  Modalidad	: {{cur.modalidad}}
+                </p>
+              </div>
+              <div class="d-flex justify-content-between align-items-center">
+                <div class="btn-group">
+                  <a href="#" class="btn btn-primary btn-sm" role="button" aria-pressed="true">Mas Información..</a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        {% endfor %}
+    </div>
+{% endblock %}
